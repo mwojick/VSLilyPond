@@ -1,8 +1,6 @@
 # VSLilyPond
 
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version-short/lhl2617.vslilypond.svg)](https://marketplace.visualstudio.com/items?itemName=lhl2617.vslilypond)
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs/lhl2617.vslilypond.svg)](https://vsmarketplacebadge.apphb.com/installs/lhl2617.vslilypond.svg)
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/rating-star/lhl2617.vslilypond.svg)](https://marketplace.visualstudio.com/items?itemName=lhl2617.vslilypond)
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=lhl2617.vslilypond)
 
 Provides syntax and error highlighting, IntelliSense and AutoComplete, compilation on save, MIDI (input and playback) support for [LilyPond](http://lilypond.org/) in VSCode. Works with any VSCode supported PDF previewer for PDF preview.
 
@@ -10,16 +8,20 @@ See [docs/INSTALL.md](docs/INSTALL.md) for a setup guide.
 
 ## Features
 
-### Error highlighting 📜 
+### Error highlighting 📜
+
 ![Error highlighting](./docs/assets/gifs/syntaxHighlighting.gif)
 
 ### IntelliSense and AutoComplete 💡
+
 ![IntelliSense and AutoComplete](./docs/assets/gifs/intellisense.gif)
 
 ### Compilation on save 💾
+
 ![Compilation on save](./docs/assets/gifs/compileSave.gif)
 
 ### MIDI Input 🎹
+
 ![MIDI Input](./docs/assets/gifs/midiInput.gif)
 Supports chord mode, relative mode and sharp/flat accidentals. See [DEMOS.md](./docs/DEMOS.md) for advanced features in action, and [SETTINGS.md](./docs/SETTINGS.md) on how to toggle them.
 
@@ -30,9 +32,11 @@ Supports chord mode, relative mode and sharp/flat accidentals. See [DEMOS.md](./
 ### Two-way Point and Click 📄
 
 #### Forward (Score to PDF)
+
 ![Forward Point-and-Click](./docs/assets/gifs/point-and-click-forward.gif)
 
 #### Backward (PDF to Score)
+
 ![Backward Point-and-Click](./docs/assets/gifs/point-and-click-backward.gif)
 
 See [here](https://github.com/lhl2617/VSLilyPond-PDF-preview) for more information (including a usage guide).
@@ -41,16 +45,16 @@ See [here](https://github.com/lhl2617/VSLilyPond-PDF-preview) for more informati
 
 See [docs/INSTALL.md](docs/INSTALL.md) for a setup guide.
 
-* [VSCode](https://code.visualstudio.com/) 1.46.0 minimum
-* [LilyPond](http://lilypond.org/) (Tested on 2.22.1)
-* (Optional) MIDI Devices for MIDI Input and Playback
-* (Optional for Windows, Linux and macOS users) [python-ly](https://pypi.org/project/python-ly/): Required for formatting (more information [here](https://marketplace.visualstudio.com/items?itemName=lhl2617.lilypond-formatter))
+- [VSCode](https://code.visualstudio.com/) 1.46.0 minimum
+- [LilyPond](http://lilypond.org/) (Tested on 2.22.1)
+- (Optional) MIDI Devices for MIDI Input and Playback
+- (Optional for Windows, Linux and macOS users) [python-ly](https://pypi.org/project/python-ly/): Required for formatting (more information [here](https://marketplace.visualstudio.com/items?itemName=lhl2617.lilypond-formatter))
 
 ## Extension Controls, Commands and Settings
 
-* Commands: See [docs/COMMANDS.md](docs/COMMANDS.md)
-* Settings: See [docs/SETTINGS.md](docs/SETTINGS.md)
-* Status Bar interface: See [docs/STATUSBAR.md](docs/STATUSBAR.md)
+- Commands: See [docs/COMMANDS.md](docs/COMMANDS.md)
+- Settings: See [docs/SETTINGS.md](docs/SETTINGS.md)
+- Status Bar interface: See [docs/STATUSBAR.md](docs/STATUSBAR.md)
 
 ## Issues & FAQ
 
@@ -60,9 +64,9 @@ See the FAQ at [docs/FAQ.md](docs/FAQ.md).
 
 ## Contributing
 
-* File bugs and/or feature requests in the [GitHub repository](https://github.com/lhl2617/VSLilyPond)
-* Pull requests are welcome in the [GitHub repository](https://github.com/lhl2617/VSLilyPond)
-* Buy me a Coffee ☕️ via [PayPal](https://paypal.me/lhl2617)
+- File bugs and/or feature requests in the [GitHub repository](https://github.com/lhl2617/VSLilyPond)
+- Pull requests are welcome in the [GitHub repository](https://github.com/lhl2617/VSLilyPond)
+- Buy me a Coffee ☕️ via [PayPal](https://paypal.me/lhl2617)
 
 ## Development
 
@@ -86,6 +90,7 @@ See the FAQ at [docs/FAQ.md](docs/FAQ.md).
   See [here](https://code.visualstudio.com/api/get-started/your-first-extension) for a detailed extension development guide.
 
 #### Testing MIDI input
+
 - On Windows, download VMPK and loopMIDI. These will allow you to test with a virtual MIDI keyboard.
 
 #### Releasing
@@ -93,6 +98,7 @@ See the FAQ at [docs/FAQ.md](docs/FAQ.md).
 Releasing is done automatically via GitHub Actions. Bump the version in `package.json` and update `CHANGELOG.md` before merging into the default branch.
 
 ## Acknowledgements
+
 Base syntax highlighting depends on the [LilyPond Syntax extension](https://marketplace.visualstudio.com/items?itemName=jeandeaual.lilypond-syntax) by [Alexis Jeandeau](https://github.com/jeandeaual), under the Creative Commons Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) license (http://creativecommons.org/licenses/by-sa/3.0/). See that repository for additional acknowledgements.
 
 IntelliSense and AutoComplete depends on the [LilyPond AutoComplete (Commands & Keywords) extension](https://marketplace.visualstudio.com/items?itemName=lhl2617.lilypond-snippets),
