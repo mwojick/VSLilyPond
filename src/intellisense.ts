@@ -139,13 +139,66 @@ const processIntellisenseErrors = async (
 }
 
 // intellisense produces a midi file `-.tmp`. Delete this if exists
-const clearTmpMidiFile = async (dirName: string) => {
+const clearTmpMidiFile = (dirName: string) => {
   const midiFilePath = path.join(dirName, `-.tmp`)
 
   if (fs.existsSync(midiFilePath)) {
     fs.unlinkSync(midiFilePath)
-    // logger(`Removed tmp midi file`, LogLevel.info, true);
+    // logger(`Removed tmp midi file`, LogLevel.info, true)
   }
+}
+
+// Also clean up any temporary PDF files created during intellisense
+const clearTmpPdfFiles = (dirName: string) => {
+  try {
+    // Clean up the dash PDF file
+    const dashPdfPath = path.join(dirName, `-.pdf`)
+    if (fs.existsSync(dashPdfPath)) {
+      fs.unlinkSync(dashPdfPath)
+      // logger(`Removed temporary dash PDF file`, LogLevel.info, true)
+    }
+
+    // Clean up any lilypond-tmp-*.pdf files
+    const files = fs.readdirSync(dirName)
+    const tmpPdfFiles = files.filter(
+      (file) => file.startsWith("lilypond-tmp-") && file.endsWith(".pdf")
+    )
+
+    tmpPdfFiles.forEach((file) => {
+      const tmpPdfPath = path.join(dirName, file)
+      fs.unlinkSync(tmpPdfPath)
+      // logger(`Removed temporary PDF file: ${file}`, LogLevel.info, true)
+    })
+  } catch (err) {
+    logger(
+      `Error cleaning up temporary PDF files: ${err}`,
+      LogLevel.warning,
+      true
+    )
+  }
+}
+
+// Function to clean up temporary LY backup files
+const clearLyBackupFiles = (dirName: string) => {
+  try {
+    // Clean up any .ly~ backup files
+    const files = fs.readdirSync(dirName)
+    const backupFiles = files.filter((file) => file.endsWith(".ly~"))
+
+    backupFiles.forEach((file) => {
+      const backupPath = path.join(dirName, file)
+      fs.unlinkSync(backupPath)
+      // logger(`Removed backup file: ${file}`, LogLevel.info, true)
+    })
+  } catch (err) {
+    logger(`Error cleaning up backup files: ${err}`, LogLevel.warning, true)
+  }
+}
+
+const clearTmpFiles = (dirName: string) => {
+  clearTmpMidiFile(dirName)
+  clearTmpPdfFiles(dirName)
+  clearLyBackupFiles(dirName)
 }
 
 const execIntellisense = async (
@@ -201,7 +254,7 @@ const execIntellisense = async (
       )
       intellisenseProcess = undefined
 
-      clearTmpMidiFile(path.dirname(doc.uri.fsPath))
+      clearTmpFiles(path.dirname(doc.uri.fsPath))
     })
   } catch (err) {
     const errMsg = `Intellisense failed with error ${err}`
