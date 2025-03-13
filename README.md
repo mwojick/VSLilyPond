@@ -1,3 +1,64 @@
+## Note: This is a fork of the [original VSLilyPond extension](https://github.com/lhl2617/VSLilyPond).
+
+### Changes
+
+- Fixes [reload on create](https://github.com/lhl2617/VSLilyPond-PDF-preview/pull/118)
+  - This is fixed in [VSLilyPond-PDF-preview](https://github.com/mwojick/VSLilyPond-PDF-preview) (also forked)
+- Fixes [formatting on save issue](https://github.com/lhl2617/VSLilyPond-formatter/issues/308) by removing the dependency on the formatter for now and using a different setup (see [Setup formatting](#setup-formatting)).
+  - I've also forked [the formatter](https://github.com/mwojick/VSLilyPond-formatter) so maybe I'll fix it there at some point, but this works for now.
+- Cleans up temporary pdf and .ly~ files when intellisense runs.
+
+### Installing the forks
+
+Since the forks are not yet published on the VSCode marketplace, for now you can install them manually:
+
+> **Note:** you may have to uninstall the original extensions first.
+
+Clone the repos:
+
+```bash
+git clone git@github.com:mwojick/VSLilyPond.git
+git clone git@github.com:mwojick/VSLilyPond-PDF-preview.git
+```
+
+Install each extension in their respective directories (must have `npm` and `vsce` installed):
+
+```bash
+npm install
+vsce package
+code --install-extension *.vsix
+```
+
+> **Note:** change `code` to `cursor` or some other vscode fork if you are using that instead.
+
+### Setup formatting
+
+Install [run on save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave)
+
+Install [python-ly](https://pypi.org/project/python-ly/):
+
+```bash
+pip install python-ly
+```
+
+Add this to your `settings.json`:
+
+```json
+  "[lilypond]": {
+    "editor.formatOnSave": false
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.ly$",
+        "cmd": "ly reformat -i ${file}"
+      }
+    ]
+  },
+```
+
+---
+
 # VSLilyPond
 
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=lhl2617.vslilypond)
